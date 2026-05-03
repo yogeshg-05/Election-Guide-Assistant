@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Election Guide Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div>
+        <h1><span class="hero-icon">🗳️</span>Election Process Guide</h1>
+        <p>Interactive assistant for understanding voter registration, candidate selection, polling, and results. Follow guided steps, ask questions, and explore timelines with animated clarity.</p>
+      </div>
+      <div class="buttons">
+        <button class="button primary" onclick="scrollToSection('profile')">Open Profile</button>
+        <button class="button secondary" onclick="scrollToSection('timeline')">Explore Timeline 📅</button>
+        <button class="button secondary" onclick="scrollToSection('assistant')">Ask the Guide 🤖</button>
+      </div>
+      <div class="panel-grid">
+        <article class="panel">
+          <h2>Smart navigation</h2>
+          <p>Choose clear steps: registration, campaigning, voting day, and outcome. The assistant helps you complete each stage with confidence.</p>
+        </article>
+        <article class="panel">
+          <h2>Animated learning</h2>
+          <p>See each phase in motion with subtle cards, glowing accents, and a responsive interface built to feel engaging and effortless.</p>
+        </article>
+        <article class="panel">
+          <h2>Easy for anyone</h2>
+          <p>Designed for all users. Simple controls, readable content, and a friendly guide that answers questions in plain language.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="profile" class="profile">
+      <div class="profile-grid">
+        <article class="profile-card">
+          <div>
+            <h2>My voter profile</h2>
+            <p>Build your own election-ready profile for Indian voting guidance. Use it to track your registration, polling location, and key national voter portal links.</p>
+          </div>
+          <div class="profile-status">
+            <strong id="profile-name">Guest Voter</strong>
+            <p id="profile-region">Enter your state and registration details to personalize this guide.</p>
+          </div>
+          <div class="profile-metrics">
+            <div class="metric">
+              <strong id="status-label">Not registered</strong>
+              <small>Registration Status</small>
+            </div>
+            <div class="metric">
+              <strong id="profile-state">--</strong>
+              <small>State / UT</small>
+            </div>
+            <div class="metric">
+              <strong id="profile-constituency">--</strong>
+              <small>Constituency</small>
+            </div>
+            <div class="metric">
+              <strong id="profile-date">--</strong>
+              <small>Next deadline</small>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button class="button primary" onclick="saveProfile()">Save profile</button>
+            <button class="button secondary" onclick="fillExample()">Load example</button>
+          </div>
+          <div class="assistant-box">
+            <input id="input-name" type="text" placeholder="Your name" style="padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); color:var(--text); width:100%; margin-bottom:12px;" />
+            <input id="input-state" type="text" placeholder="State / Union Territory" style="padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); color:var(--text); width:100%; margin-bottom:12px;" />
+            <input id="input-constituency" type="text" placeholder="Assembly/Parliamentary constituency" style="padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); color:var(--text); width:100%;" />
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <h2>Indian election essentials</h2>
+          <p>Get quick access to national voting processes, official resources, and the most helpful features for Indian democracy.</p>
+          <ul class="feature-list">
+            <li>Visit the National Voters' Service Portal for voter ID and updates.</li>
+            <li>Learn how to use Form 6 for new registration and Form 7 for corrections.</li>
+            <li>Understand VVPAT, EVM, and official vote-counting timelines.</li>
+            <li>Track the Model Code of Conduct and polling day norms.</li>
+          </ul>
+          <div class="profile-actions">
+            <button class="button secondary" onclick="respond('documents')">What documents are needed?</button>
+            <button class="button secondary" onclick="respond('deadlines')">Check deadlines</button>
+          </div>
+          <div class="profile-actions">
+            <a class="button secondary" href="https://www.nvsp.in" target="_blank" rel="noreferrer noopener">NVSP portal</a>
+            <a class="button secondary" href="https://eci.gov.in" target="_blank" rel="noreferrer noopener">ECI website</a>
+          </div>
+        </article>
+      </div>
+      <div class="news-grid" id="news-grid">
+        <article class="news-card">
+          <strong>Official portal updates</strong>
+          <p>Stay aware of new voter registration windows, re-verification requirements, and citizen service improvements across the country.</p>
+        </article>
+        <article class="news-card">
+          <strong>Polling station tips</strong>
+          <p>Find your nearest booth, carry required ID, and plan your travel time to vote with confidence.</p>
+        </article>
+        <article class="news-card">
+          <strong>Electoral rights</strong>
+          <p>Know your rights to accessible voting, secrecy of ballot, and assistance for voters with special needs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="timeline">
+      <div class="timeline-card" data-index="1">
+        <strong>Step 1: Register to vote</strong>
+        <time>Now to early deadline</time>
+        <p>Confirm your eligibility, submit registration online or in person, and verify your details before the cutoff date. This is the first essential step.</p>
+      </div>
+      <div class="timeline-card" data-index="2">
+        <strong>Step 2: Learn the candidates</strong>
+        <time>Weeks before election</time>
+        <p>Review candidate platforms, attend forums, and compare policies. Good preparation helps you make an informed decision on voting day.</p>
+      </div>
+      <div class="timeline-card" data-index="3">
+        <strong>Step 3: Prepare to vote</strong>
+        <time>Days before election</time>
+        <p>Check your polling location, find sample ballots, and gather IDs or documents needed. Arrive early and know your options for early or absentee voting.</p>
+      </div>
+      <div class="timeline-card" data-index="4">
+        <strong>Step 4: Vote confidently</strong>
+        <time>Election day</time>
+        <p>Follow instructions at the polling place, review your selections, and submit your ballot. If you need help, poll workers are there to assist.</p>
+      </div>
+      <div class="timeline-card" data-index="5">
+        <strong>Step 5: Track results</strong>
+        <time>After polls close</time>
+        <p>Watch official updates, verify outcomes from trusted sources, and understand the next steps for certification and transition.</p>
+      </div>
+    </section>
+
+    <section id="checklist" class="checklist">
+      <header>
+        <div>
+          <h2>Election readiness checklist</h2>
+          <p class="progress-label" id="progress-label">0 of 4 actions completed</p>
+        </div>
+        <div class="checklist-actions">
+          <button class="button secondary" onclick="resetChecklist()">Reset checklist</button>
+        </div>
+      </header>
+      <div class="progress-bar"><span id="progress-fill"></span></div>
+      <div class="checklist-grid">
+        <button class="checklist-item" data-id="register" onclick="toggleChecklistItem('register')">
+          <div>
+            <strong>Confirm registration</strong>
+            <small>Check your status and submit paperwork before the deadline.</small>
+          </div>
+        </button>
+        <button class="checklist-item" data-id="documents" onclick="toggleChecklistItem('documents')">
+          <div>
+            <strong>Gather documents</strong>
+            <small>Collect ID, proof of residency, and any ballot paperwork.</small>
+          </div>
+        </button>
+        <button class="checklist-item" data-id="plan" onclick="toggleChecklistItem('plan')">
+          <div>
+            <strong>Plan your visit</strong>
+            <small>Know your polling place, hours, and travel route.</small>
+          </div>
+        </button>
+        <button class="checklist-item" data-id="review" onclick="toggleChecklistItem('review')">
+          <div>
+            <strong>Review candidates</strong>
+            <small>Read about options and prepare your selections.
+</small>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <section class="faq-grid">
+      <article class="faq-card">
+        <strong>How do I know if I can vote?</strong>
+        <p>Eligibility usually depends on age, citizenship, and residency. Check local election websites for the exact qualifications in your area.</p>
+      </article>
+      <article class="faq-card">
+        <strong>What happens after I vote?</strong>
+        <p>Your ballot is counted and results are certified. Follow official news sources and election authorities for accurate updates.</p>
+      </article>
+      <article class="faq-card">
+        <strong>Can I vote early?</strong>
+        <p>Many regions offer early voting and absentee ballots. Find your local deadlines and procedures before the election day.</p>
+      </article>
+      <article class="faq-card">
+        <strong>Who can help at the polling place?</strong>
+        <p>Poll workers are there to assist with questions, accessibility needs, and ballot instructions. Ask politely if you need guidance.</p>
+      </article>
+    </section>
+
+    <section id="assistant" class="assistant">
+      <header>
+        <div>
+          <h2>Ask the election assistant</h2>
+          <p class="status-badge"><span></span>Ready to answer your election process questions</p>
+        </div>
+      </header>
+
+      <div class="assistant-box">
+        <label for="user-question">Type a question or choose a topic:</label>
+        <textarea id="user-question" placeholder="For example: What documents do I need to register?" rows="4"></textarea>
+      </div>
+
+      <div class="actions">
+        <button class="button primary" onclick="respond('registration')">Registration help</button>
+        <button class="button secondary" onclick="respond('voting')">Voting day tips</button>
+        <button class="button secondary" onclick="respond('timeline')">Election timeline</button>
+        <button class="button secondary" onclick="respond('question')">Answer my question</button>
+      </div>
+
+      <div class="output" id="assistant-output">
+        <p>Welcome! Enter a question or click one of the topic buttons to get started. The assistant explains the election process step by step.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="glow-dot"></div>
+  <div class="glow-dot"></div>
+  <div class="glow-dot"></div>
+  <div class="glow-dot"></div>
+
+  <script>
+    const output = document.getElementById('assistant-output');
+    const questionInput = document.getElementById('user-question');
+    const progressFill = document.getElementById('progress-fill');
+    const progressLabel = document.getElementById('progress-label');
+    const checklistItems = document.querySelectorAll('.checklist-item');
+    const profileName = document.getElementById('profile-name');
+    const profileRegion = document.getElementById('profile-region');
+    const profileState = document.getElementById('profile-state');
+    const profileConstituency = document.getElementById('profile-constituency');
+    const profileDate = document.getElementById('profile-date');
+    const statusLabel = document.getElementById('status-label');
+    const inputName = document.getElementById('input-name');
+    const inputState = document.getElementById('input-state');
+    const inputConstituency = document.getElementById('input-constituency');
+
+    const checklistState = {
+      register: false,
+      documents: false,
+      plan: false,
+      review: false,
+    };
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function saveProfile() {
+      const name = inputName.value.trim() || 'Guest Voter';
+      const state = inputState.value.trim() || 'Unknown state';
+      const constituency = inputConstituency.value.trim() || 'Unknown constituency';
+      profileName.textContent = name;
+      profileRegion.textContent = `Personalized guidance for ${state}`;
+      profileState.textContent = state;
+      profileConstituency.textContent = constituency;
+      profileDate.textContent = 'Check your local deadline';
+      statusLabel.textContent = 'Profile ready';
+      output.innerHTML = `<p>Profile saved for ${name}. Use the questions panel to get tailored Indian voting guidance.</p>`;
+    }
+
+    function fillExample() {
+      inputName.value = 'Amit Sharma';
+      inputState.value = 'Maharashtra';
+      inputConstituency.value = 'Pune North';
+      saveProfile();
+    }
+
+    function updateProfileUI() {
+      profileName.textContent = profileName.textContent || 'Guest Voter';
+      statusLabel.textContent = statusLabel.textContent || 'Not registered';
+      profileDate.textContent = profileDate.textContent || 'Next deadline TBD';
+    }
+
+    function toggleChecklistItem(id) {
+      checklistState[id] = !checklistState[id];
+      updateChecklistUI();
+    }
+
+    function resetChecklist() {
+      Object.keys(checklistState).forEach(key => checklistState[key] = false);
+      updateChecklistUI();
+    }
+
+    function updateChecklistUI() {
+      const doneCount = Object.values(checklistState).filter(Boolean).length;
+      const percent = Math.round((doneCount / Object.keys(checklistState).length) * 100);
+      progressFill.style.width = `${percent}%`;
+      progressLabel.textContent = `${doneCount} of 4 actions completed`;
+
+      checklistItems.forEach(item => {
+        const id = item.dataset.id;
+        item.classList.toggle('completed', checklistState[id]);
+      });
+
+      if (doneCount === Object.keys(checklistState).length) {
+        output.innerHTML = '<p>Nice work! You have completed the election readiness checklist. Now review your plan and stay updated on official dates.</p>';
+      }
+    }
+
+    updateChecklistUI();
+    updateProfileUI();
+
+    const answers = {
+      registration: `Step 1: Register to vote\n\n- Check your eligibility based on age, residency, and citizenship.\n- Complete registration online or at a government office.\n- Submit before the deadline and confirm your registration status.\n- Keep proof of registration and any required ID ready.`,
+      voting: `Step 4: Vote confidently\n\n- Confirm your polling location, hours, and ID requirements.\n- Use sample ballots to review your choices ahead of time.\n- Arrive early and follow poll worker instructions.\n- Double-check your ballot before submitting it.`,
+      timeline: `The election timeline has five clear phases:\n\n1. Registration opens and closes.\n2. Candidate campaigns and debates.\n3. Ballot preparation and early voting.\n4. Election day voting.\n5. Results count, certification, and transition.\n\nEach phase is important for a strong and fair election.`,
+      documents: `Common documents for voter registration:\n\n- Government-issued photo ID (driver's license, passport).\n- Proof of address (utility bill, bank statement).\n- Voter registration card if already registered.\n\nCheck your local rules, because requirements vary by state and country.`,
+      deadlines: `Important Indian voting deadlines:\n\n- Registration opens well before each election and closes a few weeks prior.\n- Correction windows remain open for voter list updates.\n- Early voting and postal ballot dates vary by state.\n\nConsult your local election office or the National Voters' Service Portal for exact dates.`
+    };
+
+    function respond(topic) {
+      let message = '';
+      if (topic === 'question') {
+        const text = questionInput.value.trim();
+        if (!text) {
+          message = 'Please type a question or select a topic so I can give you an easy answer.';
+        } else {
+          message = generateResponse(text);
+        }
+      } else {
+        message = answers[topic];
+      }
+      output.innerHTML = '<p>' + message.replace(/\n/g, '<br>') + '</p>';
+    }
+
+    function generateResponse(text) {
+      const normalized = text.toLowerCase();
+
+      if (normalized.includes('register') || normalized.includes('registration')) {
+        return answers.registration;
+      }
+      if (normalized.includes('vote day') || normalized.includes('poll') || normalized.includes('voting')) {
+        return answers.voting;
+      }
+      if (normalized.includes('timeline') || normalized.includes('steps') || normalized.includes('process')) {
+        return answers.timeline;
+      }
+      if (normalized.includes('documents') || normalized.includes('id') || normalized.includes('proof')) {
+        return `Common documents for voter registration:\n\n- Government-issued photo ID (driver's license, passport).\n- Proof of address (utility bill, bank statement).\n- Voter registration card if already registered.\n\nCheck your local rules, because requirements vary by state and country.`;
+      }
+      if (normalized.includes('when') || normalized.includes('deadlines')) {
+        return `Deadlines vary by location.\n\n- Register as early as possible.\n- Many areas close registration 2-4 weeks before election day.\n- Early voting often starts weeks before the election.\n\nAlways verify the exact dates with your local election office.`;
+      }
+      return `Great question! Here's how to think about it:\n\n- Identify which election phase you're asking about.\n- If it's registration, focus on eligibility and deadlines.\n- If it's voting day, focus on location, ID, and ballot review.\n- If it's results, look for official announcements from election authorities.`;
+    }
+  </script>
+</body>
+</html>
