@@ -1,4 +1,4 @@
-# hackthon-of-google
+# Election Guide Assistant
 
 Election Guide Assistant - Interactive voter education platform with profile management, timeline, checklist, and FAQ.
 
